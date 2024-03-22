@@ -15,14 +15,11 @@
     <div class="card-data">
       <h2 class="controles">Status</h2>
       <div class="inside-card">
-        <img class="img-control" src="../assets/images/image 1.png" />
-        <h3 id="temperatura">Temperatura: {{ temperaturaData }}°C</h3>
+        <img class="img-control" src="../assets/images/espiar.png" />
+        <h3 id="temperatura">Presencia: {{ presenciaData }}</h3>
       </div>
 
-      <div class="inside-card">
-        <img class="img-control" src="../assets/images/image 2.png" />
-        <h3 id="humedad">Humedad: {{ humedadData }}%</h3>
-      </div>
+      
 
       <div class="inside-card">
         <img
@@ -38,38 +35,14 @@
         </form>
       </div>
 
-      <div class="inside-card">
-        <img
-          class="img-control"
-          src="../assets/images/luz-inteligente.png"
-        />
-        <h3>Luz Exterior</h3>
-        <form action="">
-          <label class="switch">
-            <input type="checkbox" checked />
-            <span class="slider round"></span>
-          </label>
-        </form>
-      </div>
+      
+
+      
 
       <div class="inside-card">
         <img
           class="img-control"
-          src="../assets/images/aire-acondicionado.png"
-        />
-        <h3>Ventilador</h3>
-        <form action="">
-          <label class="switch">
-            <input type="checkbox" checked />
-            <span class="slider round"></span>
-          </label>
-        </form>
-      </div>
-
-      <div class="inside-card">
-        <img
-          class="img-control"
-          src="../assets/images/puerta.png"
+          src="../assets/images/cerradura-inteligente.png"
         />
         <h3>Puerta</h3>
         <form action="">
@@ -80,19 +53,7 @@
         </form>
       </div>
 
-      <div class="inside-card">
-        <img
-          class="img-control"
-          src="../assets/images/cortina-inteligente.png"
-        />
-        <h3>Ventana</h3>
-        <form action="">
-          <label class="switch">
-            <input type="checkbox" checked />
-            <span class="slider round"></span>
-          </label>
-        </form>
-      </div>
+     
 
      
 

@@ -1,7 +1,7 @@
 <template>
     <header>
       <div class="main-title">
-        <h1>iHouse</h1>
+        <h1 class="ihouse">iHouse</h1>
       </div>
       <div class="h3-weather">
         <img class="icon" :src="icon">
@@ -29,7 +29,7 @@
   },
   methods: {
     fetchData(){
-      fetch('https://open-weather13.p.rapidapi.com/city/latlon/20.27602328161253/-97.95958440902079', {
+      fetch('....https://open-weather13.p.rapidapi.com/city/latlon/20.27602328161253/-97.95958440902079', {
         headers: {
           'X-RapidAPI-Key': '61136b56e6msh332c900aa456d82p199c02jsn40f3d2cf2402',
     'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
@@ -59,6 +59,10 @@
   </script>
   
   <style scoped>
+  .ihouse{
+    font-weight: 700;
+    font-family: var(--font);
+  }
   header {
     width: 100%;
     background-color: #8D3188;
@@ -75,6 +79,7 @@
     color: white;
     width: 52%;
     text-align: right;
+    
   }
   
   .h3-weather {

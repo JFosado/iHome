@@ -84,7 +84,7 @@ export default {
   .map > #cocina {
     grid-area: a;
     background-color: var(--bluesky);
-    background-image: url(../assets/iconos_casa/cocina.png);
+    background-image: url(../assets/iHouse/COCINA.png);
     background-size: contain;
   }
     
@@ -92,34 +92,34 @@ export default {
   .map > #sala {
     grid-area: b;
     background-color: var(--darkblue);
-    background-image: url(../assets/iconos_casa/sala.png);
+    background-image: url(../assets/iHouse/LIVING.png);
     background-size: cover;
   }
   
-  .map > #cochera {
+  .map > #garage {
     grid-area: c;
     background-color:var(--darkpurple);
-    background-image: url(../assets/iconos_casa/garage.png);
+    background-image: url(../assets/iHouse/GARAGE.png);
     background-size: cover;
   }
   
   .map > #bano1 {
     grid-area: d;
     background-color: var(--darkpurple);
-    background-image: url(../assets/iconos_casa/bano1.png);
+    background-image: url(../assets/iHouse/BATHROOM.png);
     background-size: cover;
   }
   .map > #bano2 {
     grid-area: e;
    
     background-color: var(--pink);
-    background-image: url(../assets/iconos_casa/bano2.png);
+    background-image: url(../assets/iHouse/BATHROOM_2.png);
     background-size: cover;
   }
   .map > #habitacion1 {
     grid-area: f;
     background-color:#fcf2f7;
-    background-image: url(../assets/iconos_casa/hab1.png);
+    background-image: url(../assets/iHouse/BEDROOM_1.png);
     background-size: contain;
     background-repeat: no-repeat
 
@@ -127,24 +127,26 @@ export default {
   .map > #habitacion2 {
     grid-area: g;
     background-color:#cab8da;
-    background-image: url(../assets/iconos_casa/hab2.png);
+    background-image: url(../assets/iHouse/BEDROOM_2.png);
     background-size: contain;
     background-repeat: no-repeat
   }
   .map > #habitacion3 {
     grid-area: h;
     background-color: white ;
-    background-image: url(../assets/iconos_casa/hab3.png);
+    background-image: url(../assets/iHouse/BEDROOM_3.png);
     background-size: contain;
     background-repeat: no-repeat
   }
-  #cocina, #sala, #cochera, #bano1, #bano2, #habitacion1, #habitacion2, #habitacion3{
+  #cocina, #sala, #garage, #bano1, #bano2, #habitacion1, #habitacion2, #habitacion3{
     display: flex;
     place-items: center;
     justify-content: center;
-    color: white;
+    color: black;
+    text-decoration: none;
     font-size: 35px;
     font-weight: 500;
+    text-shadow: 2px 2px 2px white;
     
 
   }

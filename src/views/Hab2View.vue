@@ -32,25 +32,12 @@
         <h3>Luz Interior</h3>
         <form action="">
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox" v-model="lightStatus" @change="onLight" />
             <span class="slider round"></span>
           </label>
         </form>
       </div>
 
-      <div class="inside-card">
-        <img
-          class="img-control"
-          src="../assets/images/luz-inteligente.png"
-        />
-        <h3>Luz Exterior</h3>
-        <form action="">
-          <label class="switch">
-            <input type="checkbox" checked />
-            <span class="slider round"></span>
-          </label>
-        </form>
-      </div>
 
       <div class="inside-card">
         <img
@@ -60,7 +47,7 @@
         <h3>Ventilador</h3>
         <form action="">
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox" v-model="fanStatus" @change="onFan" />
             <span class="slider round"></span>
           </label>
         </form>
@@ -74,7 +61,7 @@
         <h3>Puerta</h3>
         <form action="">
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox" v-model="doorStatus" @change="openDoor" />
             <span class="slider round"></span>
           </label>
         </form>
@@ -88,7 +75,7 @@
         <h3>Ventana</h3>
         <form action="">
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox" v-model="windowStatus" @change="openWindow" />
             <span class="slider round"></span>
           </label>
         </form>
@@ -241,34 +228,116 @@ export default {
     return {
       humedadData: "",
       temperaturaData: "",
-      isChecked: false,
+      gasData:"",
+      windowStatus: false,
+      doorStatus: false,
+      fanStatus:false,
+      lightStatus:false
     };
   },
   created() {
     this.fetchData();
   },
+  mounted(){
+    setInterval(this.fetchWindowStatus, 3000);
+    setInterval(this.fetchDoorStatus, 3000);
+    setInterval(this.fetchFanStatus, 3000);
+    setInterval(this.fetchLightStatus, 3000);
+  },
   methods: {
     fetchData() {
-      fetch(
-        "http://back-integradora-production.up.railway.app/consults/room2/temperature"
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          this.humedadData = data[0].Humedad;
-          this.temperaturaData = data[0].Temperatura;
-          console.log(data);
-          console.log(data.temperatura);
+  fetch(
+    "http://back-integradora-production.up.railway.app/consults/room2/temperature"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      this.humedadData = data[0].Humedad;
+      this.temperaturaData = data[0].Temperatura;
+      console.log(data);
+      console.log(data.temperatura);
+    })
+    .catch((error) => {
+      console.error("Error al obtener datos:", error);
+    });
+},
+
+
+fetchWindowStatus(){
+  fetch("https://back-integradora-production.up.railway.app/consults/room2/window")
+    .then((response) => response.json())
+    .then((data) => {
+      this.windowStatus = data[0].isOpened;
+    })
+    .catch((error) => {
+      console.error("Error al obtener datos en la segunda llamada:", error);
+    });
+},
+fetchFanStatus(){
+  fetch("https://back-integradora-production.up.railway.app/consults/room2/fan")
+    .then((response) => response.json())
+    .then((data) => {
+      this.fanStatus = data[0].isOn;
+    })
+    .catch((error) => {
+      console.error("Error al obtener datos en la segunda llamada:", error);
+    });
+},
+fetchDoorStatus(){
+  fetch("https://back-integradora-production.up.railway.app/consults/room2/door")
+    .then((response) => response.json())
+    .then((data) => {
+      this.doorStatus = data[0].isOpened;
+    })
+    .catch((error) => {
+      console.error("Error al obtener datos en la segunda llamada:", error);
+    });
+},
+fetchLightStatus(){
+  fetch("https://back-integradora-production.up.railway.app/consults/room2/internal-light")
+    .then((response) => response.json())
+    .then((data) => {
+      this.lightStatus = data[0].isOn;
+    })
+    .catch((error) => {
+      console.error("Error al obtener datos en la segunda llamada:", error);
+    });
+},
+openWindow(){
+  fetch("")
+  .then(response => {
+          console.log('Respuesta de la solicitud GET:', response);
         })
-        .catch((error) => {
-          console.error("Error al obtener datos:", error);
+        .catch(error => {
+          console.error('Error al enviar la solicitud GET:', error);
         });
-    },
-    async handleChange() {
-      if (this.isChecked) {
-      } else {
-        console.log("El checkbox está desmarcado");
-      }
-    },
+},
+openDoor(){
+  fetch("")
+  .then(response => {
+          console.log('Respuesta de la solicitud GET:', response);
+        })
+        .catch(error => {
+          console.error('Error al enviar la solicitud GET:', error);
+        });
+},
+onFan(){
+  fetch("")
+  .then(response => {
+          console.log('Respuesta de la solicitud GET:', response);
+        })
+        .catch(error => {
+          console.error('Error al enviar la solicitud GET:', error);
+        });
+},
+onLight(){
+  fetch("http://192.168.137.1:3000/action/room1/ligth")
+  .then(response => {
+          console.log('Respuesta de la solicitud GET:', response);
+        })
+        .catch(error => {
+          console.error('Error al enviar la solicitud GET:', error);
+        });
+}
   },
   components: {
     RouterLink,
