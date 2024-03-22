@@ -1,0 +1,20 @@
+@import './base.css';
+
+:root {
+  --darkblue:#2B4964;
+  --bluesky:#4D7BAF;
+  --darkpurple:#8D3188;
+  --purple:#CBB9E9;
+  --pink:#FE68B5;
+  --font:"Montserrat Alternates", sans-serif;
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+}
+html{
+  font-size: 62.5%;
+  font-family: var(--font);
+}
