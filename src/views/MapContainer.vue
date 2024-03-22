@@ -4,7 +4,7 @@
       <div class="map">
         <RouterLink to="/cocina" id="cocina">Cocina</RouterLink>
         <RouterLink to="/sala" id="sala">Sala</RouterLink>
-        <RouterLink to="/cochera" id="cochera">Cochera</RouterLink>
+        <RouterLink to="/garage" id="garage">Garage</RouterLink>
         <RouterLink to="/bano1" id="bano1">Baño 1</RouterLink>
         <RouterLink to="/bano2" id="bano2">Baño 2</RouterLink>
         <RouterLink to="/habitacion1" id="habitacion1">Habitacion 1</RouterLink>
