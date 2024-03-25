@@ -2,7 +2,7 @@
     <aside class="navbar">
       <div class="profile">
                 <img src="../assets/iconos_casa/usuario (1).png" alt="imagen de usuario" class="user-img">
-                <h3>Jose Angel</h3>
+                <h3>Usuario</h3>
             </div>
             <div class="list-container">
                 <ul class="list"> 
@@ -14,7 +14,7 @@
                     <li><img src="../assets/iconos_casa/partes de la casa-11.png" alt="" style="height:50px; width:auto;"><RouterLink to="/garage" id="garage">Garage</RouterLink></li>
                     <li><img src="../assets/iconos_casa/partes de la casa-13.png" alt="" style="height:50px; width:auto;"><RouterLink to="/bano1" id="bano1">Baño 1</RouterLink></li>
                     <li><img src="../assets/iconos_casa/partes de la casa-13.png" alt="" style="height:50px; width:auto;"><RouterLink to="/bano2" id="bano2">Baño 2</RouterLink></li>
-                    <li><img src="" alt="" style="height:50px; width:auto;"><RouterLink to="/bano2" id="bano2">Consumo</RouterLink></li>
+                   
                 </ul>
             </div>
     </aside>
@@ -30,13 +30,13 @@
   
   <style scoped>
   .navbar {
-    width: 17%;
-    height: 92%;
+    width: 18%;
+    height: 68%;
     position: absolute;
     background-color: white;
     border: solid 1px black;
-    top: 50px;
-    left: 40px;
+    top: 51px;
+    left: 30px;
     border-radius: 15px;
   }
   
@@ -51,13 +51,13 @@
     align-items: center;
 }
 .list{
-    padding: 30px;
-    font-size: 20px;
+    padding: 10px;
+    font-size: 18px;
     list-style: none;
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     
 }
 a{

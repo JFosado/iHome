@@ -20,13 +20,14 @@ import Sidebar from './components/Sidebar.vue';
 
 <style scoped>
 .map-container {
-    border: solid 1px black;
-    height: 550px;
-    width: 1000px;
+  border: solid 1px black;
+    height: 500px;
+    width: 880px;
     position: absolute;
-    left: 400px;
-    top: 120px;
+    left: 270px;
+    top: 110px;
     border-radius: 40px;
-    padding: 40px;
+    padding: 30px;
+    display: flex;
   }
 </style>

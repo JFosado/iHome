@@ -75,7 +75,7 @@
         <h3>Ventana</h3>
         <form action="">
           <label class="switch">
-            <input type="checkbox" v-model="windowStatus" @change="openWindow" />
+            <input type="checkbox" v-model="windowStatus" onchange="openWindow" />
             <span class="slider round"></span>
           </label>
         </form>
@@ -234,6 +234,7 @@ export default {
   },
   created() {
     this.fetchData();
+   
   },
   mounted(){
     setInterval(this.fetchWindowStatus, 3000);
@@ -244,7 +245,7 @@ export default {
   methods: {
     fetchData() {
   fetch(
-    "http://back-integradora-production.up.railway.app/consults/room1/temperature"
+    "http://172.16.0.192:3000/consults/room1/temperature"
   )
     .then((response) => response.json())
     .then((data) => {
@@ -260,7 +261,7 @@ export default {
 
 
 fetchWindowStatus(){
-  fetch("https://back-integradora-production.up.railway.app/consults/room1/window")
+  fetch("http://172.16.0.192:3000/consults/room1/window")
     .then((response) => response.json())
     .then((data) => {
       this.windowStatus = data[0].isOpened;
@@ -270,7 +271,7 @@ fetchWindowStatus(){
     });
 },
 fetchFanStatus(){
-  fetch("https://back-integradora-production.up.railway.app/consults/room1/fan")
+  fetch("http://172.16.0.192:3000/consults/room1/fan")
     .then((response) => response.json())
     .then((data) => {
       this.fanStatus = data[0].isOn;
@@ -280,7 +281,7 @@ fetchFanStatus(){
     });
 },
 fetchDoorStatus(){
-  fetch("https://back-integradora-production.up.railway.app/consults/room1/door")
+  fetch("http://172.16.0.192:3000/consults/room1/door")
     .then((response) => response.json())
     .then((data) => {
       this.doorStatus = data[0].isOpened;
@@ -290,7 +291,7 @@ fetchDoorStatus(){
     });
 },
 fetchLightStatus(){
-  fetch("https://back-integradora-production.up.railway.app/consults/room1/internal-light")
+  fetch("http://172.16.0.192:3000/consults/room1/internal-light")
     .then((response) => response.json())
     .then((data) => {
       this.lightStatus = data[0].isOn;

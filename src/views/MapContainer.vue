@@ -52,15 +52,15 @@ export default {
   </script>
   
   <style scoped>
-  .map-container {
+  #main-container {
     border: solid 1px black;
-    height: 550px;
-    width: 1000px;
+    height: 500px;
+    width: 880px;
     position: absolute;
-    left: 400px;
-    top: 120px;
+    left: 270px;
+    top: 110px;
     border-radius: 40px;
-    padding: 40px;
+    padding: 30px;
     display: flex;
   }
   

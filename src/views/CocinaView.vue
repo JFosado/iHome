@@ -69,7 +69,7 @@
         <h3>Puerta</h3>
         <form action="">
           <label class="switch">
-            <input type="checkbox" v-model="doorStatus" @change="openDoor" />
+            <input type="checkbox" v-model="doorStatus" @change="openDoor()" />
             <span class="slider round"></span>
           </label>
         </form>
@@ -256,7 +256,7 @@ export default {
   methods: {
     fetchData() {
   fetch(
-    "http://back-integradora-production.up.railway.app/consults/kitchen/temperature"
+    "http://172.16.0.192:3000/consults/kitchen/temperature"
   )
     .then((response) => response.json())
     .then((data) => {
@@ -272,7 +272,7 @@ export default {
 
 fetchGas() {
  
-  fetch("http://back-integradora-production.up.railway.app/consults/kitchen/gas")
+  fetch("http://172.16.0.192:3000/consults/kitchen/gas")
     .then((response) => response.json())
     .then((data) => {
       this.gasData = data[0].Gas;
@@ -282,7 +282,7 @@ fetchGas() {
     });
 },
 fetchWindowStatus(){
-  fetch("https://back-integradora-production.up.railway.app/consults/kitchen/window")
+  fetch("http://172.16.0.192:3000/consults/kitchen/window")
     .then((response) => response.json())
     .then((data) => {
       this.windowStatus = data[0].isOpened;
@@ -292,7 +292,7 @@ fetchWindowStatus(){
     });
 },
 fetchFanStatus(){
-  fetch("https://back-integradora-production.up.railway.app/consults/kitchen/fan")
+  fetch("http://172.16.0.192:3000/consults/kitchen/fan")
     .then((response) => response.json())
     .then((data) => {
       this.fanStatus = data[0].isOn;
@@ -302,7 +302,7 @@ fetchFanStatus(){
     });
 },
 fetchDoorStatus(){
-  fetch("https://back-integradora-production.up.railway.app/consults/kitchen/door")
+  fetch("http://172.16.0.192:3000/consults/kitchen/door")
     .then((response) => response.json())
     .then((data) => {
       this.doorStatus = data[0].isOpened;
@@ -312,7 +312,7 @@ fetchDoorStatus(){
     });
 },
 fetchLightStatus(){
-  fetch("https://back-integradora-production.up.railway.app/consults/kitchen/internal-light")
+  fetch("http://172.16.0.192:3000/consults/kitchen/internal-light")
     .then((response) => response.json())
     .then((data) => {
       this.lightStatus = data[0].isOn;
@@ -331,7 +331,7 @@ openWindow(){
         });
 },
 openDoor(){
-  fetch("")
+  fetch("http://192.168.137.140:3000/action/room1/openDoor")
   .then(response => {
           console.log('Respuesta de la solicitud GET:', response);
         })
@@ -349,7 +349,7 @@ onFan(){
         });
 },
 onLight(){
-  fetch("http://192.168.137.1:3000/action/room1/ligth")
+  fetch("")
   .then(response => {
           console.log('Respuesta de la solicitud GET:', response);
         })
