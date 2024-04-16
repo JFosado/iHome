@@ -24,34 +24,11 @@
   },
   created() {
 
-      this.fetchData();
+
    
   },
   methods: {
-    fetchData(){
-      fetch('....https://open-weather13.p.rapidapi.com/city/latlon/20.27602328161253/-97.95958440902079', {
-        headers: {
-          'X-RapidAPI-Key': '61136b56e6msh332c900aa456d82p199c02jsn40f3d2cf2402',
-    'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
-        },
-        method: 'GET'
-      })
-        .then(response => response.json())
-        .then(data => {
-         
-          this.climaData= (data.main.temp - 273).toFixed(1).replace(/\.0+$/,'');
-          this.locationData=data.name;
-          let iconurl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-          this.icon = iconurl; 
-        
-          console.log(data.name)
-          console.log(data.weather[0].icon)
-          
-        })
-        .catch(error => {
-          console.error('Error al obtener datos:', error);
-        });
-    }
+    
   
   }
   }

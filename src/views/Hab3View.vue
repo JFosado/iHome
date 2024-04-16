@@ -40,19 +40,7 @@
 
      
 
-      <div class="inside-card">
-        <img
-          class="img-control"
-          src="../assets/images/aire-acondicionado.png"
-        />
-        <h3>Ventilador</h3>
-        <form action="">
-          <label class="switch">
-            <input type="checkbox" v-model="fanStatus" @change="onFan" />
-            <span class="slider round"></span>
-          </label>
-        </form>
-      </div>
+      
 
       <div class="inside-card">
         <img
@@ -248,7 +236,7 @@ export default {
   methods: {
     fetchData() {
   fetch(
-    "http://back-integradora-production.up.railway.app/consults/room2/temperature"
+    "http://192.168.0.112:3000/consults/room3/temperature"
   )
     .then((response) => response.json())
     .then((data) => {
@@ -258,87 +246,75 @@ export default {
       console.log(data.temperatura);
     })
     .catch((error) => {
-      console.error("Error al obtener datos:", error);
+      console.error("Error al obtener datos Humedad y Temperatura:", error);
     });
 },
 
 
 fetchWindowStatus(){
-  fetch("https://back-integradora-production.up.railway.app/consults/room3/window")
+  fetch("http://192.168.0.112:3000/consults/room3/window")
     .then((response) => response.json())
     .then((data) => {
       this.windowStatus = data[0].isOpened;
     })
     .catch((error) => {
-      console.error("Error al obtener datos en la segunda llamada:", error);
+      console.error("Error fetchWindowStatus():", error);
     });
 },
 fetchFanStatus(){
-  fetch("https://back-integradora-production.up.railway.app/consults/room3/fan")
+  fetch("http://192.168.0.112:3000/consults/room3/fan")
     .then((response) => response.json())
     .then((data) => {
       this.fanStatus = data[0].isOn;
     })
     .catch((error) => {
-      console.error("Error al obtener datos en la segunda llamada:", error);
+      console.error("Error fetchFanStatus:", error);
     });
 },
 fetchDoorStatus(){
-  fetch("https://back-integradora-production.up.railway.app/consults/room3/door")
+  fetch("http://192.168.0.112:3000/consults/room3/door")
     .then((response) => response.json())
     .then((data) => {
       this.doorStatus = data[0].isOpened;
     })
     .catch((error) => {
-      console.error("Error al obtener datos en la segunda llamada:", error);
+      console.error("Error fetchDoorStatus:", error);
     });
 },
 fetchLightStatus(){
-  fetch("https://back-integradora-production.up.railway.app/consults/room3/internal-light")
+  fetch("http://192.168.0.112:3000/consults/room3/internal-light")
     .then((response) => response.json())
     .then((data) => {
       this.lightStatus = data[0].isOn;
     })
     .catch((error) => {
-      console.error("Error al obtener datos en la segunda llamada:", error);
+      console.error("Error fetchLightStatus:", error);
     });
 },
-openWindow(){
-  fetch("")
-  .then(response => {
-          console.log('Respuesta de la solicitud GET:', response);
-        })
-        .catch(error => {
-          console.error('Error al enviar la solicitud GET:', error);
-        });
-},
-openDoor(){
-  fetch("")
-  .then(response => {
-          console.log('Respuesta de la solicitud GET:', response);
-        })
-        .catch(error => {
-          console.error('Error al enviar la solicitud GET:', error);
-        });
-},
-onFan(){
-  fetch("")
-  .then(response => {
-          console.log('Respuesta de la solicitud GET:', response);
-        })
-        .catch(error => {
-          console.error('Error al enviar la solicitud GET:', error);
-        });
-},
-onLight(){
-  fetch("http://192.168.137.1:3000/action/room1/ligth")
-  .then(response => {
-          console.log('Respuesta de la solicitud GET:', response);
-        })
-        .catch(error => {
-          console.error('Error al enviar la solicitud GET:', error);
-        });
-}
+onLight() {
+  fetch("http://192.168.0.196:3000/action/room3/ligth")
+    .then((response) => 
+    console.log(response.json()))
+    .catch((error) => {
+      console.error("Error onLight():", error);
+    });
+    },
+  openDoor() {
+  fetch("http://192.168.0.196:3000/action/room3/openDoor")
+    .then((response) => 
+    console.log(response.json()))
+    .catch((error) => {
+      console.error("Error openDoor():", error);
+    });
+    },
+  openWindow() {
+  fetch("http://192.168.0.196:3000/action/room3/openWindow")
+    .then((response) => 
+    console.log(response.json()))
+    .catch((error) => {
+      console.error("Error openWindow():", error);
+    });
+    },
   },
   components: {
     RouterLink,

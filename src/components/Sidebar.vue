@@ -14,6 +14,7 @@
                     <li><img src="../assets/iconos_casa/partes de la casa-11.png" alt="" style="height:50px; width:auto;"><RouterLink to="/garage" id="garage">Garage</RouterLink></li>
                     <li><img src="../assets/iconos_casa/partes de la casa-13.png" alt="" style="height:50px; width:auto;"><RouterLink to="/bano1" id="bano1">Baño 1</RouterLink></li>
                     <li><img src="../assets/iconos_casa/partes de la casa-13.png" alt="" style="height:50px; width:auto;"><RouterLink to="/bano2" id="bano2">Baño 2</RouterLink></li>
+                    <li><img src="../assets/iconos_casa/partes de la casa-13.png" alt="" style="height:50px; width:auto;"><RouterLink to="/actuadores" id="actuadores">Actuadores</RouterLink></li>
                    
                 </ul>
             </div>
@@ -30,8 +31,8 @@
   
   <style scoped>
   .navbar {
-    width: 18%;
-    height: 68%;
+    width: 15%;
+    height: 88%;
     position: absolute;
     background-color: white;
     border: solid 1px black;

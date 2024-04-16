@@ -30,13 +30,11 @@
         <h3>Luz Interior</h3>
         <form action="">
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox"  v-model="lightStatus" @change="onLight" />
             <span class="slider round"></span>
           </label>
         </form>
       </div>
-
-      
 
       
 
@@ -48,7 +46,7 @@
         <h3>Puerta</h3>
         <form action="">
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox"  v-model="doorStatus" @change="openDoor" />
             <span class="slider round"></span>
           </label>
         </form>
@@ -200,9 +198,9 @@ export default {
   name: "Bano2View",
   data() {
     return {
-      humedadData: "",
-      temperaturaData: "",
-      isChecked: false,
+      presenciaData: "",
+      lightStatus: false,
+      doorStatus: false
     };
   },
   created() {
@@ -211,30 +209,43 @@ export default {
   methods: {
     fetchData() {
       fetch(
-        "http://back-integradora-production.up.railway.app/consults/bathroom2/temperature"
+        "http://192.168.0.112:3000/consults/bathroom2/presence"
       )
         .then((response) => response.json())
         .then((data) => {
-          this.humedadData = data[0].Humedad;
-          this.temperaturaData = data[0].Temperatura;
-          console.log(data);
-          console.log(data.temperatura);
+          this.presenciaData = data[0].Presencia;
+
+
         })
         .catch((error) => {
           console.error("Error al obtener datos:", error);
         });
     },
-    async handleChange() {
-      if (this.isChecked) {
-      } else {
-        console.log("El checkbox está desmarcado");
-      }
+    fetchDoorStatus() {
+      fetch("http://192.168.0.112:3000/consults/bathroom2/window")
+        .then((response) => response.json())
+        .then((data) => {
+          this.doorStatus = data[0].isOpened;
+        })
+        .catch((error) => {
+          console.error("Error fetchDoorStatus():", error);
+        });
     },
+    fetchLightStatus() {
+      fetch("http://192.168.0.112:3000/consults/bathroom2/internal-light")
+        .then((response) => response.json())
+        .then((data) => {
+          this.lightStatus = data[0].isOn;
+        })
+        .catch((error) => {
+          console.error("Error fetchLightStatus:", error);
+        });
   },
   components: {
     RouterLink,
   },
-};
+}
+}
 </script>
 
   

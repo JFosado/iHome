@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-// import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
 import Sidebar from './components/Sidebar.vue';
 </script>
@@ -12,19 +11,17 @@ import Sidebar from './components/Sidebar.vue';
     
  
   
-  <!-- <RouterLink to="/">Home</RouterLink>
-   <RouterLink to="/about">About</RouterLink>
-  <RouterView /> -->
+ 
 
 </template>
 
-<style scoped>
-.map-container {
+<style>
+#main-container {
   border: solid 1px black;
     height: 500px;
     width: 880px;
     position: absolute;
-    left: 270px;
+    left: 400px;
     top: 110px;
     border-radius: 40px;
     padding: 30px;

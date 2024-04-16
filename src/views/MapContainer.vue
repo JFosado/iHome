@@ -54,11 +54,11 @@ export default {
   <style scoped>
   #main-container {
     border: solid 1px black;
-    height: 500px;
-    width: 880px;
+    height: 530px;
+    width: 950px;
     position: absolute;
-    left: 270px;
-    top: 110px;
+    left: 400px;
+    top: 120px;
     border-radius: 40px;
     padding: 30px;
     display: flex;

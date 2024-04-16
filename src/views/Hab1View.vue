@@ -39,19 +39,7 @@
       </div>
 
 
-      <div class="inside-card">
-        <img
-          class="img-control"
-          src="../assets/images/aire-acondicionado.png"
-        />
-        <h3>Ventilador</h3>
-        <form action="">
-          <label class="switch">
-            <input type="checkbox" v-model="fanStatus" @change="onFan" />
-            <span class="slider round"></span>
-          </label>
-        </form>
-      </div>
+     
 
       <div class="inside-card">
         <img
@@ -75,7 +63,7 @@
         <h3>Ventana</h3>
         <form action="">
           <label class="switch">
-            <input type="checkbox" v-model="windowStatus" onchange="openWindow" />
+            <input type="checkbox" v-model="windowStatus" @change="openWindow" />
             <span class="slider round"></span>
           </label>
         </form>
@@ -87,6 +75,121 @@
     </div>
   </div>
 </template>
+<script>
+import { RouterLink } from "vue-router";
+
+export default {
+  name: "Hab1View",
+  data() {
+    return {
+      humedadData: "",
+      temperaturaData: "",
+      windowStatus: false,
+      doorStatus: false,
+      fanStatus:false,
+      lightStatus:false
+    };
+  },
+  created() {
+    this.fetchData();
+   
+  },
+  mounted(){
+    setInterval(this.fetchWindowStatus, 3000);
+    setInterval(this.fetchDoorStatus, 3000);
+    setInterval(this.fetchFanStatus, 3000);
+    setInterval(this.fetchLightStatus, 3000)
+  },
+  methods: {
+    fetchData() {
+  fetch(
+    "http://192.168.0.112:3000/consults/room1/temperature"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      this.humedadData = data[0].Humedad;
+      this.temperaturaData = data[0].Temperatura;
+      console.log(data);
+      console.log(data.temperatura);
+    })
+    .catch((error) => {
+      console.error("Error al obtener datos Humedad y Temperatura:", error);
+    });
+},
+
+
+fetchWindowStatus(){
+  fetch("http://192.168.0.112:3000/consults/room1/window")
+    .then((response) => response.json())
+    .then((data) => {
+      this.windowStatus = data[0].isOpened;
+    })
+    .catch((error) => {
+      console.error("Error fetchWindowStatus():", error);
+    });
+},
+fetchFanStatus(){
+  fetch("http://192.168.0.112:3000/consults/room1/fan")
+    .then((response) => response.json())
+    .then((data) => {
+      this.fanStatus = data[0].isOn;
+    })
+    .catch((error) => {
+      console.error("Error fetchFanStatus:", error);
+    });
+},
+fetchDoorStatus(){
+  fetch("http://192.168.0.112:3000/consults/room1/door")
+    .then((response) => response.json())
+    .then((data) => {
+      this.doorStatus = data[0].isOpened;
+    })
+    .catch((error) => {
+      console.error("Error fetchDoorStatus:", error);
+    });
+},
+fetchLightStatus(){
+  fetch("http://192.168.0.112:3000/consults/room1/internal-light")
+    .then((response) => response.json())
+    .then((data) => {
+      this.lightStatus = data[0].isOn;
+    })
+    .catch((error) => {
+      console.error("Error fetchLightStatus:", error);
+    });
+},
+onLight() {
+  fetch("http://192.168.0.163:3000/action/room1/ligth")
+    .then((response) => 
+    console.log(response.json()))
+    .catch((error) => {
+      console.error("Error onLight():", error);
+    });
+    },
+    openDoor() {
+  fetch("http://192.168.0.163:3000/action/room1/openDoor")
+    .then((response) => 
+    console.log(response.json()))
+    .catch((error) => {
+      console.error("Error openDoor():", error);
+    });
+    },
+  openWindow() {
+  fetch("http://192.168.0.163:3000/action/room1/openWindow")
+    .then((response) => 
+    console.log(response.json()))
+    .catch((error) => {
+      console.error("Error openWindow():", error);
+    });
+    },
+   
+  },
+  components: {
+    RouterLink,
+  },
+};
+</script>
+
 <style>
 
 .container-title-room{
@@ -215,130 +318,3 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 </style>
-
-<script>
-import { RouterLink } from "vue-router";
-
-export default {
-  name: "Hab1View",
-  data() {
-    return {
-      humedadData: "",
-      temperaturaData: "",
-      gasData:"",
-      windowStatus: false,
-      doorStatus: false,
-      fanStatus:false,
-      lightStatus:false
-    };
-  },
-  created() {
-    this.fetchData();
-   
-  },
-  mounted(){
-    setInterval(this.fetchWindowStatus, 3000);
-    setInterval(this.fetchDoorStatus, 3000);
-    setInterval(this.fetchFanStatus, 3000);
-    setInterval(this.fetchLightStatus, 3000);
-  },
-  methods: {
-    fetchData() {
-  fetch(
-    "http://172.16.0.192:3000/consults/room1/temperature"
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      this.humedadData = data[0].Humedad;
-      this.temperaturaData = data[0].Temperatura;
-      console.log(data);
-      console.log(data.temperatura);
-    })
-    .catch((error) => {
-      console.error("Error al obtener datos:", error);
-    });
-},
-
-
-fetchWindowStatus(){
-  fetch("http://172.16.0.192:3000/consults/room1/window")
-    .then((response) => response.json())
-    .then((data) => {
-      this.windowStatus = data[0].isOpened;
-    })
-    .catch((error) => {
-      console.error("Error al obtener datos en la segunda llamada:", error);
-    });
-},
-fetchFanStatus(){
-  fetch("http://172.16.0.192:3000/consults/room1/fan")
-    .then((response) => response.json())
-    .then((data) => {
-      this.fanStatus = data[0].isOn;
-    })
-    .catch((error) => {
-      console.error("Error al obtener datos en la segunda llamada:", error);
-    });
-},
-fetchDoorStatus(){
-  fetch("http://172.16.0.192:3000/consults/room1/door")
-    .then((response) => response.json())
-    .then((data) => {
-      this.doorStatus = data[0].isOpened;
-    })
-    .catch((error) => {
-      console.error("Error al obtener datos en la segunda llamada:", error);
-    });
-},
-fetchLightStatus(){
-  fetch("http://172.16.0.192:3000/consults/room1/internal-light")
-    .then((response) => response.json())
-    .then((data) => {
-      this.lightStatus = data[0].isOn;
-    })
-    .catch((error) => {
-      console.error("Error al obtener datos en la segunda llamada:", error);
-    });
-},
-openWindow(){
-  fetch("")
-  .then(response => {
-          console.log('Respuesta de la solicitud GET:', response);
-        })
-        .catch(error => {
-          console.error('Error al enviar la solicitud GET:', error);
-        });
-},
-openDoor(){
-  fetch("")
-  .then(response => {
-          console.log('Respuesta de la solicitud GET:', response);
-        })
-        .catch(error => {
-          console.error('Error al enviar la solicitud GET:', error);
-        });
-},
-onFan(){
-  fetch("")
-  .then(response => {
-          console.log('Respuesta de la solicitud GET:', response);
-        })
-        .catch(error => {
-          console.error('Error al enviar la solicitud GET:', error);
-        });
-},
-onLight(){
-  fetch("http://192.168.137.1:3000/action/room1/ligth")
-  .then(response => {
-          console.log('Respuesta de la solicitud GET:', response);
-        })
-        .catch(error => {
-          console.error('Error al enviar la solicitud GET:', error);
-        });
-}
-  },
-  components: {
-    RouterLink,
-  },
-};
-</script>

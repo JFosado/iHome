@@ -9,6 +9,7 @@ import Hab1View from '@/views/Hab1View.vue'
 import Hab2View from '@/views/Hab2View.vue'
 import Hab3View from '@/views/Hab3View.vue'
 import GarageView from '@/views/GarageView.vue'
+import ActuadoresView from '@/views/ActuadoresView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -58,6 +59,11 @@ const router = createRouter({
       name: 'garage',
       component: GarageView
     },
+    {
+      path: '/actuadores',
+      name: 'actuadores',
+      component: ActuadoresView
+    }
    
   ]
 })
