@@ -233,7 +233,7 @@ export default {
   },
   methods: {
     fetchData() {
-  fetch("http://192.168.0.112:3000/consults/livingroom/temperature"
+  fetch("http://192.168.0.128:3000/consults/livingroom/temperature"
   )
     .then((response) => response.json())
     .then((data) => {
@@ -249,7 +249,7 @@ export default {
 
 
 fetchWindowStatus(){
-  fetch("http://192.168.0.112:3000/consults/livingroom/window")
+  fetch("http://192.168.0.128:3000/consults/livingroom/window")
     .then((response) => response.json())
     .then((data) => {
       this.windowStatus = data[0].isOpened;
@@ -259,7 +259,7 @@ fetchWindowStatus(){
     });
 },
 fetchFanStatus(){
-  fetch("http://192.168.0.112:3000/consults/livingroom/fan")
+  fetch("http://192.168.0.128:3000/consults/livingroom/fan")
     .then((response) => response.json())
     .then((data) => {
       this.fanStatus = data[0].isOn;
@@ -269,7 +269,7 @@ fetchFanStatus(){
     });
 },
 fetchDoorStatus(){
-  fetch("http://192.168.0.112:3000/consults/livingroom/door")
+  fetch("http://192.168.0.128:3000/consults/livingroom/door")
     .then((response) => response.json())
     .then((data) => {
       this.doorStatus = data[0].isOpened;
@@ -279,7 +279,7 @@ fetchDoorStatus(){
     });
 },
 fetchLightStatus(){
-  fetch("http://192.168.0.112:3000/consults/livingroom/internal-light")
+  fetch("http://192.168.0.128:3000/consults/livingroom/internal-light")
     .then((response) => response.json())
     .then((data) => {
       this.lightStatus = data[0].isOn;

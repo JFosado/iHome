@@ -14,7 +14,7 @@ export default {
 		return {
   
 
-			data: [
+			chartData: [
 				{
 					category: "Cocina",
 					value1: 10
@@ -140,8 +140,8 @@ series.columns.template.adapters.add("stroke", function (stroke, target) {
 // Set data
 
 
-xAxis.data.setAll(this.data);
-series.data.setAll(this.data);
+xAxis.data.setAll(this.chartData);
+series.data.setAll(this.chartData);
 
 
 
@@ -154,26 +154,59 @@ chart.appear(1000, 100);
 			this.root = root;
 		},
 		updateData() {
-			fetch("http://192.168.137.1:3000/consults/kitchen/avg")
+			fetch("https://back-integradora-production.up.railway.app/consults/chart")
 				.then((response) => response.json())
 				.then((data) => {
-           let promedioHumedad = data[0].humedadPromedio;
-           let promedioTemperatura = data[0].temperaturaPromedio;
-           let gasPromedio = data[0].gasPromedio;
+           let garajes = data.garajes;
+           let bat1 = data.bathroom1;
+           let bat2 = data.bathroom2;
+           let hab1 = data.room1;
+           let hab2 = data.room2;
+           let hab3 = data.room3;
+           let sala = data.livingrooms;
+           let cocina = data.kitchens;
+
+           console.log(data.kitchens)
 
     
 				
-         this.chartData = [
+         this.chartData = 
 		
-				{ category: "Promedio temperatura", value1:promedioTemperatura , value2: 15 },
-				{ category: "Promedio Humedad", value1: promedioHumedad, value2: 16 },
-				{ category: "3", value1: gasPromedio, value2: 10 },
-				{ category: "4", value1: gasPromedio, value2: 10 },
-				{ category: "5", value1: gasPromedio, value2: 10 },
-				{ category: "Promedio Gas", value1: gasPromedio, value2: 10 },
-				{ category: "Promedio Gas", value1: gasPromedio, value2: 10 },
-				{ category: "Promedio Gas", value1: gasPromedio, value2: 10 },
-			];
+         [
+				{
+					category: "Cocina",
+					value1: cocina
+				},
+				{
+					category: "Sala",
+					value1: sala
+				},
+				{
+					category: "Garaje",
+					value1: garajes
+				},
+                {
+					category: "Baño 1",
+					value1: bat1
+				},
+                {
+					category: "Baño 2",
+					value1: bat2
+				},
+                {
+					category:"Habitacion1",
+					value1: hab1
+				},
+                {
+					category: "Habitacion2",
+					value1: hab2
+				},
+                {
+					category: "Habitacion3",
+					value1: hab3
+				}
+			]
+			;
 				})
 				.catch((error) => {
 					console.error("Error al obtener datos:", error);
@@ -185,7 +218,8 @@ chart.appear(1000, 100);
 		chartData(newData) {
 			this.chart.xAxes.getIndex(0).data.setAll(newData);
 			this.chart.series.getIndex(0).data.setAll(newData);
-			this.chart.series.getIndex(1).data.setAll(newData);
+	
+			
 		},
 	},
 	beforeDestroy() {
@@ -203,6 +237,7 @@ chart.appear(1000, 100);
 	padding: 50px;
 	position: absolute;
 	left: 400px;
+    top: 150px;
 }
 .actualizar-actuadores{
     position: relative;
