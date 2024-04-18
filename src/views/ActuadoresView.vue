@@ -1,7 +1,11 @@
 <template>
-	<div class="hello" ref="chartdiv"></div>
-	
-</template>
+    <div class="container">
+      <h1 class="title-bano1">Cantidad de Actuadores por Habitación</h1>
+      <div class="chart-container">
+        <div class="hello" ref="chartdiv"></div>
+      </div>
+    </div>
+  </template>
 
 <script>
 import * as am5 from "@amcharts/amcharts5";
@@ -232,23 +236,26 @@ chart.appear(1000, 100);
 </script>
 
 <style scoped>
-.hello {
-	width: 60%;
-	height: 400px;
-	padding: 50px;
-	position: absolute;
-	left: 400px;
-    top: 150px;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.actualizar-actuadores{
-    position: relative;
-    left: 55%;
-    top: 82%;
-    background-color: var(--darkpurple);
-    color: white;
-    border-style: none;
-    padding: 5px;
-    border-radius: 5px;
 
+.chart-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.hello {
+  width: 80%; /* Ajusta el ancho según sea necesario */
+  max-width: 800px; /* Establece un ancho máximo para la gráfica */
+  height: 500px;
+}
+
+.title-bano1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 30px; /* Ajusta el margen inferior según sea necesario */
 }
 </style>
