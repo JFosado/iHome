@@ -228,10 +228,10 @@ export default {
     this.fetchData();
   },
   mounted(){
-    setInterval(this.fetchWindowStatus, 3000);
-    setInterval(this.fetchDoorStatus, 3000);
-    setInterval(this.fetchFanStatus, 3000);
-    setInterval(this.fetchLightStatus, 3000);
+    setInterval(this.fetchWindowStatus, 10000);
+    setInterval(this.fetchDoorStatus, 10000);
+    setInterval(this.fetchFanStatus, 10000);
+    setInterval(this.fetchLightStatus, 10000);
   },
   methods: {
     fetchData() {

@@ -8,16 +8,11 @@ import Sidebar from './components/Sidebar.vue';
   <Header/>
   <Sidebar/>
   <RouterView class="map-container" id="main-container"/>
-    
- 
-  
- 
-
 </template>
 
 <style>
 #main-container {
-  border: solid 1px black;
+
     height: 500px;
     width: 880px;
     position: absolute;

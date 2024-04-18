@@ -1,6 +1,6 @@
 <template>
 	<div class="hello" ref="chartdiv"></div>
-	<button @click="updateData" class="actualizar-actuadores">Actualizar Datos</button>
+	
 </template>
 
 <script>
@@ -52,6 +52,7 @@ export default {
 	},
 	mounted() {
 		this.createChart();
+		setInterval(this.updateData, 3000);
 	},
 	methods: {
 		createChart() {
